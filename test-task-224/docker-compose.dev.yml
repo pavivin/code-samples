@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  db:
+    image: bitnami/postgresql:15.1.0
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/bitnami/postgresql
+    env_file:
+      - .env
+    networks:
+      - test-dev
+  web:
+    build: .
+    ports:
+      - 5000:5000
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - test-dev
+    command:
+      - python
+      - main.py
+volumes:
+  postgres_data:
+networks:
+  test-dev:
+    external: true

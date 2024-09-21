@@ -1,0 +1,10 @@
+.venv/
+.vscode/
+.git/
+Dockerfile
+*.Dockerfile
+README.md
+.helm/
+.dockerignore
+.env
+env/
