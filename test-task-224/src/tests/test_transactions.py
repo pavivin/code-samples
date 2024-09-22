@@ -36,20 +36,6 @@ async def user_to():
 async def test_transaction_create(
     user_from: User, user_to: User, amount: int, client: AsyncClient, db_session: AsyncSession
 ):
-    # There were some issues with the auth library, so I couldn't test properly. So I wrote some ideas and possible code
-
-    # First of all, we are testing input parameters
-
-    # amount - positive, zero, negative, different type (string, int)
-    # user_id - existing, non-existing, not valid UUID
-    # type - valid, non-valid, valid but other parameters are not proper. e.g. withdraw with user_id
-
-    # After, we test status_code
-    # Non-valid parametrs - 400, Non-authorized - 401, Forbidden - 403, Server Error - 500
-
-    # Finally we check database values
-    # We check that we transfer needed amount of money
-
     user_from_balance = user_from.balance  # save previous balances, might be coping issues
     user_to_balance = user_to.balance
 
